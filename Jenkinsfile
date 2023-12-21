@@ -8,4 +8,19 @@ pipeline{
             }
         }
     }
+
+    post{
+        always{
+            echo "Always running";
+        }
+        success{
+            echo "When Success or OK";
+        }
+        failure{
+            echo "When error happen";
+        }
+        cleanup{
+            echo "After all happen";
+        }
+    }
 }

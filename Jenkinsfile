@@ -5,16 +5,22 @@ pipeline{
         stage('Build') {
             steps{
                 echo 'Build Step 1';
+                echo 'Build Step 2';
+                echo 'Build Step 3';
             }
         }
         stage('Test') {
             steps{
-                echo 'Tes Step 1';
+                echo 'Test Step 1';
+                echo 'Test Step 2';
+                echo 'Test Step 3';
             }
         }
         stage('Deploy'){
             steps{
                 echo 'Deploy Step 1';
+                echo 'Deploy Step 2';
+                echo 'Deploy Step 3';
             }
         }
     }

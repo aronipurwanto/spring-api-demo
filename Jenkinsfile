@@ -8,7 +8,7 @@ pipeline{
     }
 
     options{
-        disabledCurrentBuilds()
+        disableCurrentBuilds()
         timeout(time:10, unit:'SECOND')
     }
 

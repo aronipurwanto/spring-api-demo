@@ -12,6 +12,7 @@ pipeline{
         timeout(time:10, unit:'SECONDS')
     }
 
+/**
     parameters{
         string(name:'NAME', defaultValue:'Guest', description:'What your names?')
         text(name:'DESCRIPTION', defaultValue:'', description:'Tell about you')
@@ -19,6 +20,7 @@ pipeline{
         choice(name:'SOCIAL_MEDIA', choices:['FACEBOOK','IG','TWITTER'], description:'What your social media?')
         password(name:'SECRET', defaultValue:'', description:'Secret Key')
     }
+    **/
 
     triggers{
         cron("* * * * *")
@@ -26,6 +28,7 @@ pipeline{
     }
 
     stages{
+    /**
         stage('Parameter'){
             steps{
                 echo "Hello ${params.NAME}"
@@ -35,6 +38,7 @@ pipeline{
                 echo "Password ${params.SECRET}"
             }
         }
+        **/
         stage('Preparation'){
             steps{
                 echo "AUTHOR: ${AUTHOR}"

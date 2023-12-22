@@ -5,14 +5,14 @@ pipeline{
         stage('Build') {
             steps{
                 echo 'Start build';
-                sh('./mvnw clean compile test-compile')
+                sh("./mvnw clean compile test-compile")
                 echo 'Finish Build';
             }
         }
         stage('Test') {
             steps{
                 echo 'Start Test';
-                sh('./mvnw test')
+                sh("./mvnw test")
                 echo 'Finish Test';
             }
         }

@@ -4,7 +4,7 @@ pipeline{
     environment {
         AUTHOR = "Roni Purwanto"
         COMPANY = "SGI Asia"
-        APP = credential("user_roni")
+        APP = credentials("user_roni")
     }
 
     stages{

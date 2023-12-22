@@ -13,7 +13,7 @@ pipeline{
                 echo "AUTHOR: ${AUTHOR}"
                 echo "COMPANY: ${COMPANY}"
                 echo "Username : ${APP_USR}"
-                echo "Password : ${APP_PSW}"
+                sh('echo "Password : $APP_PSW" > "rahasia.txt"')
                 echo "Start Job: ${env.JOB_NAME}"
                 echo "Start Build: ${env.BUILD_NUMBER}"
                 echo "Branch Name: ${env.BRANCH_NAME}"

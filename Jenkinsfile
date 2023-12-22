@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment {
-        AUTHOR = "Roni Purwanto",
+        AUTHOR = "Roni Purwanto"
         COMPANY = "SGI Asia"
     }
 

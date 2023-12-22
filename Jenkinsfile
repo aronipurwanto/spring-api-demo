@@ -39,6 +39,20 @@ pipeline{
             }
         }
         **/
+        stage('input'){
+            input{
+                message "can we deploy?"
+                ok "Yes, of course"
+                submitters "roni,irfan,mugi,fariz"
+                parameters {
+                    choice(name:'TARGET_ENV', choices:['DEV','UAT','PROD'], description:'Will deploy to')
+                }
+            }
+            steps{
+                echo "Deploy to: ${TARGET_ENV}"
+            }
+
+        }
         stage('Preparation'){
             steps{
                 echo "AUTHOR: ${AUTHOR}"

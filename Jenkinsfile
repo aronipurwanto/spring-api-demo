@@ -25,6 +25,23 @@ pipeline{
     }
 
     stages{
+        stage("Preparation") {
+          stages {
+            stage("Prepare Java") {
+              steps {
+                echo("Prepare Java")
+                sleep(5)
+              }
+            }
+            stage("Prepare Maven") {
+              steps {
+                echo("Prepare Maven")
+                sleep(5)
+              }
+            }
+          }
+        }
+
         stage('input'){
             input{
                 message "can we deploy?"
@@ -38,21 +55,6 @@ pipeline{
                 echo "Deploy to: ${TARGET_ENV}"
             }
 
-        }
-        stage('Preparation'){
-            environment {
-                APP = credentials("user_roni")
-            }
-
-            steps{
-                echo "AUTHOR: ${AUTHOR}"
-                echo "COMPANY: ${COMPANY}"
-                echo "Username : ${APP_USR}"
-                sh('echo "Password : $APP_PSW" > "rahasia.txt"')
-                echo "Start Job: ${env.JOB_NAME}"
-                echo "Start Build: ${env.BUILD_NUMBER}"
-                echo "Branch Name: ${env.BRANCH_NAME}"
-            }
         }
 
         stage('Build') {
@@ -84,6 +86,7 @@ pipeline{
                 echo 'Finish Test';
             }
         }
+
         stage("Release") {
               when {
                 expression {

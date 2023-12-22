@@ -20,6 +20,11 @@ pipeline{
         password(name:'SECRET', defaultValue:'', description:'Secret Key')
     }
 
+    triggers{
+        cron("* * * * *")
+        //pullSCM("*/5 * * * *")
+    }
+
     stages{
         stage('Parameter'){
             steps{

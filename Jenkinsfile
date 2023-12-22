@@ -12,7 +12,24 @@ pipeline{
         timeout(time:10, unit:'SECONDS')
     }
 
+    parameters{
+        string(name:'NAME', defaultValue:'Guest', description:'What your names?')
+        test(name:'DESCRIPTION', defaultValue:'', description:'Tell about you')
+        booleanParam(name:'DEPLOY', defaultValue:false, description:'Need to deploye')
+        choice(name:'SOCIAL_MEDIA', choices:['FACEBOOK','IG','TWITTER'], description:'What your social media?')
+        password(name:'SECRET', defaultValue:'', description:'Secret Key')
+    }
+
     stages{
+        stage('Parameter'){
+            steps{
+                echo 'Hello ${params.NAME}'
+                echo 'Description ${params.DESCRIPTION}'
+                echo 'Deploy ${params.DEPLOY}'
+                echo 'Social Media ${params.SOCIAL_MEDIA}'
+                echo 'Password ${params.SECRET}'
+            }
+        }
         stage('Preparation'){
             steps{
                 echo "AUTHOR: ${AUTHOR}"

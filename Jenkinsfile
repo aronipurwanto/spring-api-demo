@@ -4,6 +4,7 @@ pipeline{
     environment {
         AUTHOR = "Roni Purwanto"
         COMPANY = "SGI Asia"
+        APP = credential("user_roni")
     }
 
     stages{
@@ -11,6 +12,8 @@ pipeline{
             steps{
                 echo "AUTHOR: ${AUTHOR}"
                 echo "COMPANY: ${COMPANY}"
+                echo "Username : ${APP_USR}"
+                echo "Password : ${APP_PSW}"
                 echo "Start Job: ${env.JOB_NAME}"
                 echo "Start Build: ${env.BUILD_NUMBER}"
                 echo "Branch Name: ${env.BRANCH_NAME}"

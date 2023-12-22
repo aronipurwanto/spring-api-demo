@@ -6,7 +6,7 @@ pipeline{
             steps{
                 echo "Start Job: ${env.JOB_NAME}"
                 echo "Start Build: ${env.BUILD_NAME}"
-                echo "Build Number: ${env.BUILD_NUMBER}"
+                echo "Branch Name: ${env.BRANCH_NAME}"
             }
         }
 

@@ -22,7 +22,7 @@ pipeline{
             input{
                 message "can we deploy?"
                 ok "Yes, of course"
-                submitters "roni,irfan,mugi,fariz"
+                submitter "roni,irfan,mugi,fariz"
                 parameters {
                     choice(name:'TARGET_ENV', choices:['DEV','UAT','PROD'], description:'Will deploy to')
                 }

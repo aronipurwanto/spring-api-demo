@@ -11,13 +11,6 @@ pipeline{
         timeout(time: 10, unit: 'MINUTES')
       }
 
-    /*
-    triggers{
-        cron("* * * * *")
-        //pullSCM("*/5 * * * *")
-    }
-    */
-
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
         text(name: "DESCRIPTION", defaultValue: "Guest", description: "Tell me about you")
@@ -27,6 +20,28 @@ pipeline{
     }
 
     stages{
+        stage("OS Setup") {
+          matrix {
+            axes {
+              axis {
+                name "OS"
+                values "linux", "windows", "mac"
+              }
+              axis {
+                name "ARC"
+                values "32", "64"
+              }
+            }
+            stages {
+              stage("OS Setup") {
+                steps {
+                  echo("Setup ${OS} ${ARC}")
+                }
+              }
+            }
+          }
+        }
+
         stage("Preparation") {
           failFast true
           parallel {

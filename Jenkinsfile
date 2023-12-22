@@ -23,11 +23,11 @@ pipeline{
     stages{
         stage('Parameter'){
             steps{
-                echo 'Hello ${params.NAME}'
-                echo 'Description ${params.DESCRIPTION}'
-                echo 'Deploy ${params.DEPLOY}'
-                echo 'Social Media ${params.SOCIAL_MEDIA}'
-                echo 'Password ${params.SECRET}'
+                echo "Hello ${params.NAME}"
+                echo "Description ${params.DESCRIPTION}"
+                echo "Deploy ${params.DEPLOY}"
+                echo "Social Media ${params.SOCIAL_MEDIA}"
+                echo "Password ${params.SECRET}"
             }
         }
         stage('Preparation'){

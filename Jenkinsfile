@@ -7,6 +7,11 @@ pipeline{
         APP = credentials("user_roni")
     }
 
+    options{
+        disabledCurrentBuilds()
+        timeout(time:10, unit:'SECOND')
+    }
+
     stages{
         stage('Preparation'){
             steps{

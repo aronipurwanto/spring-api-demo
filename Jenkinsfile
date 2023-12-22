@@ -11,10 +11,12 @@ pipeline{
         timeout(time: 10, unit: 'MINUTES')
       }
 
+    /*
     triggers{
-        //cron("* * * * *")
+        cron("* * * * *")
         //pullSCM("*/5 * * * *")
     }
+    */
 
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")

@@ -4,7 +4,6 @@ pipeline{
     environment {
         AUTHOR = "Roni Purwanto"
         COMPANY = "SGI Asia"
-        APP = credentials("user_roni")
     }
 
     options{
@@ -15,6 +14,14 @@ pipeline{
     triggers{
         cron("* * * * *")
         //pullSCM("*/5 * * * *")
+    }
+
+    parameters {
+        string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
+        text(name: "DESCRIPTION", defaultValue: "Guest", description: "Tell me about you")
+        booleanParam(name: "DEPLOY", defaultValue: false, description: "Need to Deploy?")
+        choice(name: "SOCIAL_MEDIA", choices: ['Instagram', 'Facebook', 'Twitter'], description: "Which Social Media?")
+        password(name: "SECRET", defaultValue: "", description: "Encrypt Key")
     }
 
     stages{
@@ -33,6 +40,10 @@ pipeline{
 
         }
         stage('Preparation'){
+            environment {
+                APP = credentials("user_roni")
+            }
+
             steps{
                 echo "AUTHOR: ${AUTHOR}"
                 echo "COMPANY: ${COMPANY}"
@@ -73,12 +84,15 @@ pipeline{
                 echo 'Finish Test';
             }
         }
-        stage('Deploy'){
-            steps{
-                echo 'Start Deploy';
-                sleep(10);
-                echo 'Finish Deploy';
-            }
+        stage("Release") {
+              when {
+                expression {
+                  return params.DEPLOY
+                }
+              }
+              steps {
+                echo "Release it"
+              }
         }
     }
 

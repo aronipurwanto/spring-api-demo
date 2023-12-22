@@ -12,7 +12,7 @@ pipeline{
       }
 
     triggers{
-        cron("* * * * *")
+        //cron("* * * * *")
         //pullSCM("*/5 * * * *")
     }
 
@@ -26,7 +26,8 @@ pipeline{
 
     stages{
         stage("Preparation") {
-          stages {
+          failFast true
+          parallel {
             stage("Prepare Java") {
               steps {
                 echo("Prepare Java")

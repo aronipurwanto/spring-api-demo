@@ -6,10 +6,10 @@ pipeline{
         COMPANY = "SGI Asia"
     }
 
-    options{
+    options {
         disableConcurrentBuilds()
-        timeout(time:10, unit:'SECONDS')
-    }
+        timeout(time: 10, unit: 'MINUTES')
+      }
 
     triggers{
         cron("* * * * *")
